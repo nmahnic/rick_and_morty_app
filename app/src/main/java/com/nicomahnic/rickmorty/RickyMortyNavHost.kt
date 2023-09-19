@@ -7,7 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.nicomahnic.product.CharactersListScreen
+import com.nicomahnic.characterslist.CharactersListScreen
 import com.nicomahnic.product.HomeScreen
 import com.nicomahnic.rickymorty.navigation.CharactersListDestination
 import com.nicomahnic.rickymorty.navigation.HomeDestination
