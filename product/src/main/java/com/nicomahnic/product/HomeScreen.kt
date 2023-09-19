@@ -1,4 +1,4 @@
-package com.nicomahnic.rickmorty
+package com.nicomahnic.product
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
