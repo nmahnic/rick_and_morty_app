@@ -3,6 +3,8 @@
     package="com.nicomahnic.rickmorty"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".RickMortyApp"
         android:allowBackup="true"

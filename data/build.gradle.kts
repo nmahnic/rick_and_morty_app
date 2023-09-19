@@ -12,6 +12,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+        buildConfigField("String", "BASE_URL_RICK_Y_MORTY", "\"https://rickandmortyapi.com/api/\"")
     }
 
     buildTypes {
@@ -23,6 +25,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -43,7 +50,13 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     val koinVersion = "3.5.0"
-    implementation ("io.insert-koin:koin-core:$koinVersion")
+    implementation("io.insert-koin:koin-core:$koinVersion")
+
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    val loggingInterceptorVersion = "4.9.3"
+    implementation("com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -52,9 +52,9 @@ dependencies {
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
 
     val koinVersion = "3.5.0"
-    implementation ("io.insert-koin:koin-core:$koinVersion")
-    implementation ("io.insert-koin:koin-android:$koinVersion")
-    implementation ("io.insert-koin:koin-androidx-compose:$koinVersion")
+     implementation("io.insert-koin:koin-core:$koinVersion")
+     implementation("io.insert-koin:koin-android:$koinVersion")
+     implementation("io.insert-koin:koin-androidx-compose:$koinVersion")
 
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
