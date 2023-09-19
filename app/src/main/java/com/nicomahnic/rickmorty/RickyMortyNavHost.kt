@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nicomahnic.characterslist.CharactersListScreen
-import com.nicomahnic.product.HomeScreen
+import com.nicomahnic.landing.HomeScreen
 import com.nicomahnic.rickmorty.navigation.CharactersListDestination
 import com.nicomahnic.rickmorty.navigation.HomeDestination
 
@@ -37,7 +37,7 @@ private fun NavGraphBuilder.charactersListDestination(navController: NavHostCont
     composable(CharactersListDestination.route) {
         CharactersListScreen(
             onCharacterClick = { character ->
-                Log.e("NM", "NAVIGATE FROM LIST TO HOME $character")
+                Log.e("NM", "NAVIGATE FROM LIST TO HOME ($character)")
                 navController.navigate(
                     HomeDestination.route
                 )

@@ -1,4 +1,4 @@
-package com.nicomahnic.product
+package com.nicomahnic.landing
 
 import org.junit.Test
 

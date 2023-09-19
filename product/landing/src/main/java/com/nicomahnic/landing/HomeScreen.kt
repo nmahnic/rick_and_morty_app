@@ -1,4 +1,4 @@
-package com.nicomahnic.product
+package com.nicomahnic.landing
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

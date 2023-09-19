@@ -49,7 +49,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":product"))
+    implementation(project(":product:landing"))
     implementation(project(":product:charactersList"))
     implementation(project(":domain"))
     implementation(project(":data"))
