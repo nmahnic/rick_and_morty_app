@@ -1,4 +1,4 @@
-package com.nicomahnic.rickymorty.navigation
+package com.nicomahnic.rickmorty.navigation
 
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavType

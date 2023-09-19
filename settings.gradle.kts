@@ -17,3 +17,5 @@ rootProject.name = "Rick & Morty"
 include(":app")
 include(":product")
 include(":product:charactersList")
+include(":domain")
+include(":data")

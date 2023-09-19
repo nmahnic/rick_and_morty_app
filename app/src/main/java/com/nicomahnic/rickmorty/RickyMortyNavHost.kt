@@ -9,8 +9,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.nicomahnic.characterslist.CharactersListScreen
 import com.nicomahnic.product.HomeScreen
-import com.nicomahnic.rickymorty.navigation.CharactersListDestination
-import com.nicomahnic.rickymorty.navigation.HomeDestination
+import com.nicomahnic.rickmorty.navigation.CharactersListDestination
+import com.nicomahnic.rickmorty.navigation.HomeDestination
 
 @Composable
 fun RickMortyNavHost() {
@@ -37,7 +37,7 @@ private fun NavGraphBuilder.charactersListDestination(navController: NavHostCont
     composable(CharactersListDestination.route) {
         CharactersListScreen(
             onCharacterClick = { character ->
-                Log.e("NM", "navigate to Details $character")
+                Log.e("NM", "NAVIGATE FROM LIST TO HOME $character")
                 navController.navigate(
                     HomeDestination.route
                 )

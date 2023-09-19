@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nicomahnic.characterslist"
+    namespace = "com.nicomahnic.product"
     compileSdk = 34
 
     defaultConfig {
@@ -30,17 +30,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
 }
 
 dependencies {
@@ -51,15 +40,10 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.7.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
     val koinVersion = "3.5.0"
     implementation ("io.insert-koin:koin-core:$koinVersion")
-    implementation ("io.insert-koin:koin-android:$koinVersion")
-    implementation ("io.insert-koin:koin-androidx-compose:$koinVersion")
-
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
