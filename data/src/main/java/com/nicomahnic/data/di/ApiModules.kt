@@ -10,14 +10,14 @@ import java.util.concurrent.TimeUnit
 
 object ApiModules {
 
-    val apiModule = module {
+    val apiModules = module {
         single {
             val retrofit: Retrofit = get()
             retrofit.create(RickMortyService::class.java)
         }
     }
 
-    val networkModule = module {
+    val networkModules = module {
         factory { provideOkHttpClient() }
         single { provideRetrofit(get()) }
     }

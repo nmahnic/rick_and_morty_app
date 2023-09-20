@@ -8,7 +8,7 @@ import org.koin.dsl.module
 
 object RepositoriesModules {
 
-    val useCases = module {
+    val modules = module {
         singleOf(::CharactersRepositoryImpl){ bind<CharactersRepository>() }
     }
 

@@ -5,7 +5,7 @@ import org.koin.dsl.module
 
 object UseCasesModules {
 
-    val useCases = module {
+    val modules = module {
         single { GetAllCharactersUseCase( get() ) }
     }
 

@@ -5,7 +5,7 @@ import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 
 object CharactersListModules {
-    val useCases = module {
+    val modules = module {
         viewModelOf(::CharactersListViewModel)
     }
 }
