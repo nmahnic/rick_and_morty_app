@@ -1,6 +1,5 @@
 package com.nicomahnic.rickmorty
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -44,10 +43,9 @@ private fun NavGraphBuilder.homeDestination(navController: NavHostController) {
 }
 
 private fun NavGraphBuilder.charactersPagingListDestination(navController: NavHostController) {
-    composable(CharactersListDestination.route) {
+    composable(CharactersPagingListDestination.route) {
         CharactersPagingListScreen(
             onCharacterClick = { characterId ->
-                Log.e("NM", "NAVIGATE FROM LIST TO HOME (characterID = $characterId)")
                 navController.navigate(
                     CharacterDetailsDestination.createNavRoute(characterId)
                 )
@@ -57,10 +55,9 @@ private fun NavGraphBuilder.charactersPagingListDestination(navController: NavHo
 }
 
 private fun NavGraphBuilder.charactersListDestination(navController: NavHostController) {
-    composable(CharactersPagingListDestination.route) {
+    composable(CharactersListDestination.route) {
         CharactersListScreen(
             onCharacterClick = { characterId ->
-                Log.e("NM", "NAVIGATE FROM LIST TO HOME (characterID = $characterId)")
                 navController.navigate(
                     CharacterDetailsDestination.createNavRoute(characterId)
                 )
@@ -76,9 +73,7 @@ private fun NavGraphBuilder.characterDetailsDestination() {
     ) { backStackEntry ->
         val characterId = backStackEntry.componentNavArg()
         characterId?.let {
-            CharacterDetailsScreen(
-                id = it,
-            )
+            CharacterDetailsScreen(id = it)
         }
     }
 }

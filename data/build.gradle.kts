@@ -58,6 +58,9 @@ dependencies {
     val loggingInterceptorVersion = "4.9.3"
     implementation("com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion")
 
+    val pagingVersion = "3.2.1"
+    implementation ("androidx.paging:paging-runtime-ktx:$pagingVersion")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

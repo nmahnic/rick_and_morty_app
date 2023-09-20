@@ -11,8 +11,8 @@ class CharactersDataSourceImpl(
     private val mapper: CharactersMapper
 ) : CharactersDataSource {
 
-    override suspend fun getAllCharacters(): Result<CharactersNetwork> {
-        val response = service.getCharactersByPage()
+    override suspend fun getAllCharacters(page: Int): Result<CharactersNetwork> {
+        val response = service.getCharactersByPage(page)
         val characters = response.body()?.let { mapper.toModel(it) }
         val error = Result.failure<CharactersNetwork>(Throwable("${response.errorBody()}"))
         return characters?.let { Result.success(it)} ?: error

@@ -5,15 +5,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.nicomahnic.components.CharacterItem
-import com.nicomahnic.components.ShimmerAnimation
+import com.nicomahnic.domain.model.Character
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -21,7 +20,8 @@ fun CharactersPagingListScreen(
     onCharacterClick: (Int) -> Unit,
     viewModel: CharactersPagingListViewModel = koinViewModel(),
 ) {
-    val charactersState by viewModel.uiState.collectAsState()
+    val charactersPagingItems: LazyPagingItems<Character> =
+        viewModel.uiState.collectAsLazyPagingItems()
 
     LazyColumn(
         modifier = Modifier
@@ -31,16 +31,8 @@ fun CharactersPagingListScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        items(charactersState.characters) {
-            CharacterItem(it, onCharacterClick)
-        }
-
-        if (charactersState.isLoading) {
-            repeat((0..10).count()) {
-                item {
-                  ShimmerAnimation()
-                }
-            }
+        items(charactersPagingItems.itemCount) { index ->
+            CharacterItem(charactersPagingItems[index]!!, onCharacterClick)
         }
 
     }

@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface RickMortyService {
 
     @GET("character")
-    suspend fun getCharactersByPage(@Query("page") page: Int = 1) : Response<CharactersNetworkEntityResponse>
+    suspend fun getCharactersByPage(@Query("page") page: Int) : Response<CharactersNetworkEntityResponse>
 
     @GET("character/{id}")
     suspend fun getCharacterById(@Path("id") id: Int) : Response<CharacterNetworkEntityResponse>
