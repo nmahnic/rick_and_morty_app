@@ -24,7 +24,10 @@ class CharactersRepositoryImpl(
 
     override suspend fun getAllPagedCharacters(): Flow<PagingData<Character>> {
         return Pager(
-            config = PagingConfig(pageSize = MAX_PAGE_SIZE, prefetchDistance = 2),
+            config = PagingConfig(
+                pageSize = MAX_PAGE_SIZE,
+                prefetchDistance = PREFETCH_DISTANCE
+            ),
             pagingSourceFactory = {
                 CharacterPagingSource(dataSource)
             }
@@ -33,5 +36,6 @@ class CharactersRepositoryImpl(
 
     companion object {
         private const val MAX_PAGE_SIZE = 10
+        private const val PREFETCH_DISTANCE = 2
     }
 }

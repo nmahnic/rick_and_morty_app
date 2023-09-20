@@ -14,15 +14,17 @@ class CharactersDataSourceImpl(
     override suspend fun getAllCharacters(page: Int): Result<CharactersNetwork> {
         val response = service.getCharactersByPage(page)
         val characters = response.body()?.let { mapper.toModel(it) }
-        val error = Result.failure<CharactersNetwork>(Throwable("${response.errorBody()}"))
-        return characters?.let { Result.success(it)} ?: error
+        return characters?.let { Result.success(it)} ?: run {
+            Result.failure(Exception("${response.errorBody()}"))
+        }
     }
 
     override suspend fun getCharacterById(id: Int): Result<Character> {
         val response = service.getCharacterById(id)
         val character = response.body()?.let { mapper.toModel(it) }
-        val error = Result.failure<Character>(Throwable("${response.errorBody()}"))
-        return character?.let { Result.success(it)} ?: error
+        return character?.let { Result.success(it)} ?: run {
+            Result.failure(Exception("${response.errorBody()}"))
+        }
     }
 
 }

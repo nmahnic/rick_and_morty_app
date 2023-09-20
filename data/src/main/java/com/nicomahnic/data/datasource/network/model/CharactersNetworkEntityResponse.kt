@@ -7,7 +7,7 @@ data class CharactersNetworkEntityResponse(
 
 data class InfoNetworkEntity(
     val count: Int,
-    val next: String,
+    val next: String? = null,
     val pages: Int,
     val prev: String? = null
 )

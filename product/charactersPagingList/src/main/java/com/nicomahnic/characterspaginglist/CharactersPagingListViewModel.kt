@@ -14,8 +14,8 @@ class CharactersPagingListViewModel(
     private val getAllPagedCharactersUseCase: GetAllPagedCharactersUseCase
 ): ViewModel() {
 
-    private val _uiState: MutableStateFlow<PagingData<Character>> = MutableStateFlow(value = PagingData.empty())
-    val uiState: MutableStateFlow<PagingData<Character>> get() = _uiState
+    private val _uiPagingState: MutableStateFlow<PagingData<Character>> = MutableStateFlow(value = PagingData.empty())
+    val uiPagingState: MutableStateFlow<PagingData<Character>> get() = _uiPagingState
 
 
     init {
@@ -24,7 +24,7 @@ class CharactersPagingListViewModel(
                 .distinctUntilChanged()
                 .cachedIn(viewModelScope)
                 .collect {
-                    _uiState.value = it
+                    _uiPagingState.value = it
                 }
         }
     }

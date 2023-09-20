@@ -7,6 +7,6 @@ object CharactersPagingListDestination: ScreenDestination {
 
     override val info: ScreenInfo = ScreenInfo(
         route = route,
-        title = "Characters wit paging"
+        title = "Characters with paging"
     )
 }
