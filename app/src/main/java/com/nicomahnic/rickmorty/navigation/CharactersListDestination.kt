@@ -7,6 +7,6 @@ object CharactersListDestination: ScreenDestination {
 
     override val info: ScreenInfo = ScreenInfo(
         route = route,
-        title = "Characters without paging"
+        title = "Search characters with filter"
     )
 }

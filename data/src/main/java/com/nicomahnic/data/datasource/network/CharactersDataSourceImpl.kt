@@ -19,6 +19,14 @@ class CharactersDataSourceImpl(
         }
     }
 
+    override suspend fun searchCharacters(inputSearch: String): Result<CharactersNetwork> {
+        val response = service.searchCharacters(inputSearch)
+        val characters = response.body()?.let { mapper.toModel(it) }
+        return characters?.let { Result.success(it)} ?: run {
+            Result.failure(Exception("${response.errorBody()}"))
+        }
+    }
+
     override suspend fun getCharacterById(id: Int): Result<Character> {
         val response = service.getCharacterById(id)
         val character = response.body()?.let { mapper.toModel(it) }

@@ -12,6 +12,9 @@ interface RickMortyService {
     @GET("character")
     suspend fun getCharactersByPage(@Query("page") page: Int) : Response<CharactersNetworkEntityResponse>
 
+    @GET("character")
+    suspend fun searchCharacters(@Query("name") name: String) : Response<CharactersNetworkEntityResponse>
+
     @GET("character/{id}")
     suspend fun getCharacterById(@Path("id") id: Int) : Response<CharacterNetworkEntityResponse>
 }

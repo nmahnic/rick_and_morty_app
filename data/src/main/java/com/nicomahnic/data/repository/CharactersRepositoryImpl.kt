@@ -18,6 +18,10 @@ class CharactersRepositoryImpl(
         return dataSource.getAllCharacters()
     }
 
+    override suspend fun searchCharacters(inputSearch: String): Result<CharactersNetwork> {
+        return dataSource.searchCharacters(inputSearch)
+    }
+
     override suspend fun getCharacterById(id: Int): Result<Character> {
         return dataSource.getCharacterById(id)
     }

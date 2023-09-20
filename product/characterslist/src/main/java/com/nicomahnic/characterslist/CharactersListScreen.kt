@@ -1,7 +1,7 @@
-
 package com.nicomahnic.characterslist
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.nicomahnic.components.CharacterItem
+import com.nicomahnic.components.InputText
 import com.nicomahnic.components.ShimmerAnimation
 import org.koin.androidx.compose.koinViewModel
 
@@ -23,7 +24,7 @@ fun CharactersListScreen(
 ) {
     val charactersState by viewModel.uiState.collectAsState()
 
-    LazyColumn(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
@@ -31,17 +32,22 @@ fun CharactersListScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        items(charactersState.characters) {
-            CharacterItem(it, onCharacterClick)
+        InputText {
+            viewModel.searchCharacters(it)
         }
 
-        if (charactersState.isLoading) {
-            repeat((0..10).count()) {
-                item {
-                  ShimmerAnimation()
+        LazyColumn{
+
+            items(charactersState.characters) {
+                CharacterItem(it, onCharacterClick)
+            }
+
+            if (charactersState.isLoading) {
+                repeat((0..10).count()) {
+                    item { ShimmerAnimation() }
                 }
             }
-        }
 
+        }
     }
 }
