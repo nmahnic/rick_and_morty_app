@@ -1,12 +1,13 @@
 package com.nicomahnic.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,7 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -36,8 +36,9 @@ fun CharacterItem(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 4.dp)
             .fillMaxWidth()
-            .height(200.dp)
+            .height(150.dp)
             .clip(RoundedCornerShape(8.dp))
+            .background(color = MaterialTheme.colorScheme.background)
             .clickable {  onCharacterClick(character.id) }
     ) {
         Row(
@@ -48,8 +49,8 @@ fun CharacterItem(
 
             Image(
                 modifier = Modifier
-                    .padding(8.dp)
-                    .height(200.dp)
+                    .padding(4.dp)
+                    .aspectRatio(1.0f)
                     .clip(RoundedCornerShape(8.dp)),
                 painter = rememberAsyncImagePainter(
                     model = character.image
@@ -67,20 +68,15 @@ fun CharacterItem(
                 Text(
                     text = character.name,
                     style = MaterialTheme.typography.headlineSmall.copy(
-                        color = Color.White,
                         fontWeight = FontWeight.Bold
                     )
                 )
-                Spacer(modifier = Modifier.height(8.dp))
                 Text(
-                    text = character.status,
+                    text = character.species,
                     modifier = Modifier
                         .padding(vertical = 8.dp),
                     maxLines = 6,
                     overflow = TextOverflow.Ellipsis,
-                    style = MaterialTheme.typography.bodyLarge.copy(
-                        color = Color.LightGray
-                    ),
                     fontWeight = FontWeight.SemiBold,
                     letterSpacing = 0.6.sp
                 )
