@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.nicomahnic.product"
+    namespace = "com.nicomahnic.landing"
     compileSdk = 34
 
     defaultConfig {

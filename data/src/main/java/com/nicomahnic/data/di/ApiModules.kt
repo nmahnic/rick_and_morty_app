@@ -1,6 +1,6 @@
 package com.nicomahnic.data.di
 import com.nicomahnic.data.datasource.network.api.RickMortyService
-import com.nicomahnic.product.BuildConfig
+import com.nicomahnic.data.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

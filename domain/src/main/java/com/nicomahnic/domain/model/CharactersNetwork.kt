@@ -1,8 +1,8 @@
 package com.nicomahnic.domain.model
 
-data class Characters(
+data class CharactersNetwork(
     val info: InfoNetwork,
-    val results: List<Result>
+    val results: List<Character>
 )
 
 data class InfoNetwork(
@@ -12,7 +12,7 @@ data class InfoNetwork(
     val prev: String? = null
 )
 
-data class Result(
+data class Character(
     val created: String,
     val episode: List<String>,
     val gender: String,

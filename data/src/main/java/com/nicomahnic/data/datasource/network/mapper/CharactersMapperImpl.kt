@@ -5,14 +5,14 @@ import com.nicomahnic.data.datasource.network.model.InfoNetworkEntity
 import com.nicomahnic.data.datasource.network.model.LocationNetworkEntity
 import com.nicomahnic.data.datasource.network.model.OriginNetworkEntity
 import com.nicomahnic.data.datasource.network.model.ResultNetworkEntity
-import com.nicomahnic.domain.model.Characters
+import com.nicomahnic.domain.model.CharactersNetwork
 import com.nicomahnic.domain.model.InfoNetwork
 import com.nicomahnic.domain.model.Location
 import com.nicomahnic.domain.model.Origin
-import com.nicomahnic.domain.model.Result
+import com.nicomahnic.domain.model.Character
 
 class CharactersMapperImpl : CharactersMapper {
-    override fun toModel(entity: CharactersNetworkEntityResponse) = Characters(
+    override fun toModel(entity: CharactersNetworkEntityResponse) = CharactersNetwork(
         info = toModel(entity.info),
         results = entity.results.map { toModel(it) }
     )
@@ -24,7 +24,7 @@ class CharactersMapperImpl : CharactersMapper {
         prev = entity.prev
     )
     
-    private fun toModel(entity: ResultNetworkEntity) = Result(
+    private fun toModel(entity: ResultNetworkEntity) = Character(
         created = entity.created,
         episode = entity.episode,
         gender = entity.gender,

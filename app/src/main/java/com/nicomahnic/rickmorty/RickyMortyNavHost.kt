@@ -36,8 +36,8 @@ private fun NavGraphBuilder.homeDestination(navController: NavHostController) {
 private fun NavGraphBuilder.charactersListDestination(navController: NavHostController) {
     composable(CharactersListDestination.route) {
         CharactersListScreen(
-            onCharacterClick = { character ->
-                Log.e("NM", "NAVIGATE FROM LIST TO HOME ($character)")
+            onCharacterClick = { characterId ->
+                Log.e("NM", "NAVIGATE FROM LIST TO HOME (characterID = $characterId)")
                 navController.navigate(
                     HomeDestination.route
                 )
