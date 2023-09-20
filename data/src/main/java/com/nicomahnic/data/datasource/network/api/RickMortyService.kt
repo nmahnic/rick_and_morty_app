@@ -1,6 +1,6 @@
 package com.nicomahnic.data.datasource.network.api
 
-import com.nicomahnic.data.datasource.network.model.CharactersNetworkResponse
+import com.nicomahnic.data.datasource.network.model.CharactersNetworkEntityResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface RickMortyService {
 
     @GET("character")
-    suspend fun getCharactersByPage(@Query("page") page: Int = 1) : Response<CharactersNetworkResponse>
+    suspend fun getCharactersByPage(@Query("page") page: Int = 1) : Response<CharactersNetworkEntityResponse>
 }

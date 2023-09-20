@@ -1,9 +1,9 @@
 package com.nicomahnic.domain.repository
 
-import kotlinx.coroutines.flow.Flow
+import com.nicomahnic.domain.model.Characters
 
 interface CharactersRepository {
 
-    suspend fun getAllCharacters(): Flow<String>
+    suspend fun getAllCharacters(): Result<Characters>
 
 }

@@ -1,8 +1,8 @@
 package com.nicomahnic.data.datasource
 
-import kotlinx.coroutines.flow.Flow
+import com.nicomahnic.domain.model.Characters
 
 interface CharactersDataSource {
-    suspend fun getAllCharacters(): Flow<String>
+    suspend fun getAllCharacters(): Result<Characters>
 
 }
