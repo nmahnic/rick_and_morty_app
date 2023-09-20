@@ -2,16 +2,12 @@ package com.nicomahnic.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -28,25 +24,23 @@ import coil.compose.rememberAsyncImagePainter
 import com.nicomahnic.domain.model.Character
 
 @Composable
-fun CharacterItem(
-    character: Character,
-    onCharacterClick: (Int) -> Unit
+fun CharacterDetail(
+    character: Character
 ) {
     Box(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 4.dp)
             .fillMaxWidth()
-            .height(150.dp)
+            .fillMaxHeight()
             .clip(RoundedCornerShape(8.dp))
             .background(color = MaterialTheme.colorScheme.background)
-            .clickable { onCharacterClick(character.id) }
     ) {
-        Row(
-            Modifier
-                .padding(all = 4.dp)
-                .fillMaxSize()
+        Column(
+            verticalArrangement = Arrangement.Top,
+            modifier = Modifier
+                .padding(vertical = 8.dp, horizontal = 12.dp)
+                .fillMaxHeight()
         ) {
-
             Image(
                 modifier = Modifier
                     .padding(4.dp)
@@ -58,29 +52,21 @@ fun CharacterItem(
                 contentScale = ContentScale.Crop,
                 contentDescription = ""
             )
-
-            Column(
-                verticalArrangement = Arrangement.Top,
+            Text(
+                text = character.name,
+                style = MaterialTheme.typography.headlineSmall.copy(
+                    fontWeight = FontWeight.Bold
+                )
+            )
+            Text(
+                text = character.species,
                 modifier = Modifier
-                    .padding(vertical = 8.dp, horizontal = 12.dp)
-                    .fillMaxHeight()
-            ) {
-                Text(
-                    text = character.name,
-                    style = MaterialTheme.typography.headlineSmall.copy(
-                        fontWeight = FontWeight.Bold
-                    )
-                )
-                Text(
-                    text = character.species,
-                    modifier = Modifier
-                        .padding(vertical = 8.dp),
-                    maxLines = 6,
-                    overflow = TextOverflow.Ellipsis,
-                    fontWeight = FontWeight.SemiBold,
-                    letterSpacing = 0.6.sp
-                )
-            }
+                    .padding(vertical = 8.dp),
+                maxLines = 6,
+                overflow = TextOverflow.Ellipsis,
+                fontWeight = FontWeight.SemiBold,
+                letterSpacing = 0.6.sp
+            )
         }
     }
 }

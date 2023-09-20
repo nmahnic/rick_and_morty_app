@@ -7,8 +7,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.nicomahnic.charactersdetails.CharacterDetailsScreen
 import com.nicomahnic.characterslist.CharactersListScreen
 import com.nicomahnic.landing.HomeScreen
+import com.nicomahnic.rickmorty.navigation.CharacterDetailsDestination
+import com.nicomahnic.rickmorty.navigation.CharacterDetailsDestination.componentNavArg
 import com.nicomahnic.rickmorty.navigation.CharactersListDestination
 import com.nicomahnic.rickmorty.navigation.HomeDestination
 
@@ -18,6 +21,7 @@ fun RickMortyNavHost() {
     NavHost(navController = navController, startDestination = HomeDestination.route) {
         homeDestination(navController)
         charactersListDestination(navController)
+        characterDetailsDestination()
     }
 }
 
@@ -39,9 +43,23 @@ private fun NavGraphBuilder.charactersListDestination(navController: NavHostCont
             onCharacterClick = { characterId ->
                 Log.e("NM", "NAVIGATE FROM LIST TO HOME (characterID = $characterId)")
                 navController.navigate(
-                    HomeDestination.route
+                    CharacterDetailsDestination.createNavRoute(characterId)
                 )
             }
         )
+    }
+}
+
+private fun NavGraphBuilder.characterDetailsDestination() {
+    composable(
+        route = CharacterDetailsDestination.route,
+        arguments = CharacterDetailsDestination.arguments
+    ) { backStackEntry ->
+        val characterId = backStackEntry.componentNavArg()
+        characterId?.let {
+            CharacterDetailsScreen(
+                id = it,
+            )
+        }
     }
 }

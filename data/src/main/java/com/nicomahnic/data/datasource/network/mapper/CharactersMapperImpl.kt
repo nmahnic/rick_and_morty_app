@@ -4,7 +4,7 @@ import com.nicomahnic.data.datasource.network.model.CharactersNetworkEntityRespo
 import com.nicomahnic.data.datasource.network.model.InfoNetworkEntity
 import com.nicomahnic.data.datasource.network.model.LocationNetworkEntity
 import com.nicomahnic.data.datasource.network.model.OriginNetworkEntity
-import com.nicomahnic.data.datasource.network.model.ResultNetworkEntity
+import com.nicomahnic.data.datasource.network.model.CharacterNetworkEntityResponse
 import com.nicomahnic.domain.model.CharactersNetwork
 import com.nicomahnic.domain.model.InfoNetwork
 import com.nicomahnic.domain.model.Location
@@ -23,8 +23,8 @@ class CharactersMapperImpl : CharactersMapper {
         pages = entity.pages,
         prev = entity.prev
     )
-    
-    private fun toModel(entity: ResultNetworkEntity) = Character(
+
+    override fun toModel(entity: CharacterNetworkEntityResponse) = Character(
         created = entity.created,
         episode = entity.episode,
         gender = entity.gender,

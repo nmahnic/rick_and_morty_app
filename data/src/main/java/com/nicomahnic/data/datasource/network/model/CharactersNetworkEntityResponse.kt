@@ -2,7 +2,7 @@ package com.nicomahnic.data.datasource.network.model
 
 data class CharactersNetworkEntityResponse(
     val info: InfoNetworkEntity,
-    val results: List<ResultNetworkEntity>
+    val results: List<CharacterNetworkEntityResponse>
 )
 
 data class InfoNetworkEntity(
@@ -12,7 +12,7 @@ data class InfoNetworkEntity(
     val prev: String? = null
 )
 
-data class ResultNetworkEntity(
+data class CharacterNetworkEntityResponse(
     val created: String,
     val episode: List<String>,
     val gender: String,

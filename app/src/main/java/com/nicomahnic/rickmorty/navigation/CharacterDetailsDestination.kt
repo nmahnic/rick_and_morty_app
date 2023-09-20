@@ -5,15 +5,15 @@ import androidx.navigation.NavType
 import androidx.navigation.navArgument
 
 object CharacterDetailsDestination : ScreenDestination {
-    private const val arg: String = "rick"
+    private const val arg: String = "id"
 
     override val route: String = "characterdetails/{$arg}"
 
     val arguments = listOf(
-        navArgument(arg) { type = NavType.StringType }
+        navArgument(arg) { type = NavType.IntType }
     )
 
-    fun createNavRoute(cast: String) = "characterdetails/$cast"
+    fun createNavRoute(id: Int) = "characterdetails/$id"
 
-    fun NavBackStackEntry.componentNavArg(): String? = arguments?.getString(arg)
+    fun NavBackStackEntry.componentNavArg(): Int? = arguments?.getInt(arg)
 }
