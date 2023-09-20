@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/product" />
             <option value="$PROJECT_DIR$/product/charactersDetails" />
             <option value="$PROJECT_DIR$/product/charactersList" />
+            <option value="$PROJECT_DIR$/product/charactersPagingList" />
             <option value="$PROJECT_DIR$/product/landing" />
           </set>
         </option>

@@ -2,10 +2,11 @@ package com.nicomahnic.landing
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,7 +23,8 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    onClick: () -> Unit,
+    screenDestinationList: List<ScreenInfo>,
+    onClick: (String) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -44,7 +46,7 @@ fun HomeScreen(
             }
         }
     ) { contentPadding ->
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .padding(contentPadding)
                 .fillMaxWidth()
@@ -52,10 +54,15 @@ fun HomeScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(
-                onClick = onClick
-            ) {
-                Text("Start")
+            items(screenDestinationList){
+                Button(
+                    onClick = { onClick(it.route) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 12.dp)
+                ) {
+                    Text(it.title)
+                }
             }
         }
     }
