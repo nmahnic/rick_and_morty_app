@@ -16,7 +16,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import com.nicomahnic.components.CharacterItem
 import com.nicomahnic.components.Loader
 import com.nicomahnic.components.ShimmerAnimation
-import com.nicomahnic.domain.model.Character
+import com.nicomahnic.domain.model.CharacterModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -24,7 +24,7 @@ fun CharactersPagingListScreen(
     onCharacterClick: (Int) -> Unit,
     viewModel: CharactersPagingListViewModel = koinViewModel(),
 ) {
-    val charactersPagingItems: LazyPagingItems<Character> =
+    val charactersPagingItems: LazyPagingItems<CharacterModel> =
         viewModel.uiPagingState.collectAsLazyPagingItems()
 
     Column {

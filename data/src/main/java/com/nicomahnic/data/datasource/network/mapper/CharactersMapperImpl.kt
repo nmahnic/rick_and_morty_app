@@ -1,30 +1,16 @@
 package com.nicomahnic.data.datasource.network.mapper
 
 import com.nicomahnic.data.datasource.network.model.CharactersNetworkEntityResponse
-import com.nicomahnic.data.datasource.network.model.InfoNetworkEntity
 import com.nicomahnic.data.datasource.network.model.LocationNetworkEntity
 import com.nicomahnic.data.datasource.network.model.OriginNetworkEntity
 import com.nicomahnic.data.datasource.network.model.CharacterNetworkEntityResponse
-import com.nicomahnic.domain.model.CharactersNetwork
-import com.nicomahnic.domain.model.InfoNetwork
-import com.nicomahnic.domain.model.Location
-import com.nicomahnic.domain.model.Origin
-import com.nicomahnic.domain.model.Character
+import com.nicomahnic.domain.model.LocationModel
+import com.nicomahnic.domain.model.OriginModel
+import com.nicomahnic.domain.model.CharacterModel
 
 class CharactersMapperImpl : CharactersMapper {
-    override fun toModel(entity: CharactersNetworkEntityResponse) = CharactersNetwork(
-        info = toModel(entity.info),
-        results = entity.results.map { toModel(it) }
-    )
-    
-    private fun toModel(entity: InfoNetworkEntity) = InfoNetwork(
-        count = entity.count,
-        next = entity.next,
-        pages = entity.pages,
-        prev = entity.prev
-    )
 
-    override fun toModel(entity: CharacterNetworkEntityResponse) = Character(
+    override fun toModel(entity: CharacterNetworkEntityResponse) = CharacterModel(
         created = entity.created,
         episode = entity.episode,
         gender = entity.gender,
@@ -38,13 +24,17 @@ class CharactersMapperImpl : CharactersMapper {
         type = entity.type,
         url = entity.url
     )
+
+    override fun toListModel(entity: CharactersNetworkEntityResponse): List<CharacterModel> {
+        return entity.results.map { this.toModel(it) }
+    }
     
-    private fun toModel(entity: LocationNetworkEntity) = Location(
+    private fun toModel(entity: LocationNetworkEntity) = LocationModel(
         name = entity.name,
         url = entity.url
     )
 
-    private fun toModel(entity: OriginNetworkEntity) = Origin(
+    private fun toModel(entity: OriginNetworkEntity) = OriginModel(
         name = entity.name,
         url = entity.url
     )

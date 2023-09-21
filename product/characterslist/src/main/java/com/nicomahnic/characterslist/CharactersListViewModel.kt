@@ -24,7 +24,7 @@ class CharactersListViewModel(
             _uiState.value = CharactersUiState(isLoading = true)
             getAllCharactersUseCase().onSuccess {
                 _uiState.value = CharactersUiState(
-                    characters = it.results,
+                    characters = it,
                     isLoading = false
                 )
             }.onFailure {
@@ -39,7 +39,7 @@ class CharactersListViewModel(
             _uiState.value = CharactersUiState(isLoading = true)
             searchCharactersUseCase(inputSearch).onSuccess {
                 _uiState.value = CharactersUiState(
-                    characters = it.results,
+                    characters = it,
                     isLoading = false
                 )
             }.onFailure {

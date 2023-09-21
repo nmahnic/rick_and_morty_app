@@ -21,11 +21,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.nicomahnic.domain.model.Character
+import com.nicomahnic.domain.model.CharacterModel
 
 @Composable
 fun CharacterDetail(
-    character: Character
+    character: CharacterModel
 ) {
     Box(
         modifier = Modifier
