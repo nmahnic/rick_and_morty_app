@@ -12,6 +12,7 @@
 - Paging
 - Flow
 - Filtering
+- Test data and domain modules
 
 ## Missing
 - Error handling
