@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("de.mannodermaus.android-junit5") version "1.9.3.0"
 }
 
 android {
@@ -61,7 +62,8 @@ dependencies {
     val pagingVersion = "3.2.1"
     implementation ("androidx.paging:paging-runtime-ktx:$pagingVersion")
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation ("org.junit.jupiter:junit-jupiter-api:5.9.2")
+    testRuntimeOnly ("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    testImplementation("org.mockito:mockito-junit-jupiter:5.3.1")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
 }
