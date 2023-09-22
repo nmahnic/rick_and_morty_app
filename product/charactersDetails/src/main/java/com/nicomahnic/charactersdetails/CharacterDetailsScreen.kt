@@ -6,6 +6,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import com.nicomahnic.components.CharacterDetail
+import com.nicomahnic.components.ErrorDialog
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -15,7 +16,11 @@ fun CharacterDetailsScreen(
 ) {
     val characterState by viewModel.uiState.collectAsState()
 
-    CharacterDetail(characterState.character)
+    if(characterState.isError){
+        ErrorDialog { viewModel.getCharacterById(id) }
+    } else {
+        CharacterDetail(characterState.character)
+    }
 
     LaunchedEffect(Unit){
         viewModel.getCharacterById(id)

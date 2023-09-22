@@ -18,7 +18,7 @@ class CharactersPagingListViewModel(
     val uiPagingState: MutableStateFlow<PagingData<CharacterModel>> get() = _uiPagingState
 
 
-    init {
+    fun initialize() {
         viewModelScope.launch {
             getAllPagedCharactersUseCase()
                 .distinctUntilChanged()

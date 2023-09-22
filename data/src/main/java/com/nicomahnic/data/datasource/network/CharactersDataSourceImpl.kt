@@ -11,26 +11,38 @@ class CharactersDataSourceImpl(
 ) : CharactersDataSource {
 
     override suspend fun getAllCharacters(page: Int): Result<List<CharacterModel>> {
-        val response = service.getCharactersByPage(page)
-        val characters = response.body()?.let { mapper.toListModel(it) }
-        return characters?.let { Result.success(it)} ?: run {
-            Result.failure(Exception("${response.errorBody()}"))
+        return try {
+            val response = service.getCharactersByPage(page)
+            val characters = response.body()?.let { mapper.toListModel(it) }
+            characters?.let { Result.success(it) } ?: run {
+                Result.failure(Exception("${response.errorBody()}"))
+            }
+        } catch (e: Exception){
+            Result.failure(Exception(e.localizedMessage))
         }
     }
 
     override suspend fun searchCharacters(inputSearch: String): Result<List<CharacterModel>> {
-        val response = service.searchCharacters(inputSearch)
-        val characters = response.body()?.let { mapper.toListModel(it) }
-        return characters?.let { Result.success(it)} ?: run {
-            Result.failure(Exception("${response.errorBody()}"))
+        return try{
+            val response = service.searchCharacters(inputSearch)
+            val characters = response.body()?.let { mapper.toListModel(it) }
+            characters?.let { Result.success(it) } ?: run {
+                Result.failure(Exception("${response.errorBody()}"))
+            }
+        } catch (e: Exception){
+            Result.failure(Exception(e.localizedMessage))
         }
     }
 
     override suspend fun getCharacterById(id: Int): Result<CharacterModel> {
-        val response = service.getCharacterById(id)
-        val character = response.body()?.let { mapper.toModel(it) }
-        return character?.let { Result.success(it)} ?: run {
-            Result.failure(Exception("${response.errorBody()}"))
+        return try {
+            val response = service.getCharacterById(id)
+            val character = response.body()?.let { mapper.toModel(it) }
+            character?.let { Result.success(it) } ?: run {
+                Result.failure(Exception("${response.errorBody()}"))
+            }
+        } catch (e: Exception){
+            Result.failure(Exception(e.localizedMessage))
         }
     }
 

@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.nicomahnic.components.CharacterItem
+import com.nicomahnic.components.ErrorDialog
 import com.nicomahnic.components.InputText
 import com.nicomahnic.components.ShimmerAnimation
 import org.koin.androidx.compose.koinViewModel
@@ -25,30 +26,34 @@ fun CharactersListScreen(
 ) {
     val charactersState by viewModel.uiState.collectAsState()
 
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-            .background(color = Color.DarkGray),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    if(charactersState.isError) {
+        ErrorDialog { viewModel.initialize() }
+    } else {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight()
+                .background(color = Color.DarkGray),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-        InputText {
-            viewModel.searchCharacters(it)
-        }
-
-        LazyColumn{
-
-            items(charactersState.characters) {
-                CharacterItem(it, onCharacterClick)
+            InputText {
+                viewModel.searchCharacters(it)
             }
 
-            if (charactersState.isLoading) {
-                repeat((0..10).count()) {
-                    item { ShimmerAnimation() }
+            LazyColumn {
+
+                items(charactersState.characters) {
+                    CharacterItem(it, onCharacterClick)
                 }
-            }
 
+                if (charactersState.isLoading) {
+                    repeat((0..10).count()) {
+                        item { ShimmerAnimation() }
+                    }
+                }
+
+            }
         }
     }
 
