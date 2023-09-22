@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.spy
 import org.mockito.kotlin.verify
 
 @ExtendWith(MockitoExtension::class)
@@ -20,9 +21,9 @@ class CharactersRepositoryTest{
 
     @BeforeEach
     fun setup() {
-        charactersRepository = CharactersRepositoryImpl(
+        charactersRepository = spy(CharactersRepositoryImpl(
             dataSource = dataSource
-        )
+        ))
     }
 
     @Test
@@ -49,6 +50,13 @@ class CharactersRepositoryTest{
             charactersRepository.getCharacterById(ANY_INT)
 
             verify(dataSource).getCharacterById(ANY_INT)
+        }
+    }
+
+    @Test
+    fun `check getAllPagedCharacters is called`() {
+        runBlocking{
+            charactersRepository.getAllPagedCharacters()
         }
     }
 
