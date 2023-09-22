@@ -1,6 +1,5 @@
 package com.nicomahnic.characterslist
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nicomahnic.characterslist.state.CharactersUiState
@@ -19,7 +18,7 @@ class CharactersListViewModel(
     private val _uiState = MutableStateFlow(CharactersUiState())
     val uiState: StateFlow<CharactersUiState> = _uiState.asStateFlow()
 
-    init {
+    fun initialize() {
         viewModelScope.launch {
             _uiState.value = CharactersUiState(isLoading = true)
             getAllCharactersUseCase().onSuccess {
@@ -28,7 +27,6 @@ class CharactersListViewModel(
                     isLoading = false
                 )
             }.onFailure {
-                Log.e("NM", "VIEWMODEL ERROR")
                 _uiState.value = CharactersUiState(isError = true)
             }
         }
@@ -43,7 +41,6 @@ class CharactersListViewModel(
                     isLoading = false
                 )
             }.onFailure {
-                Log.e("NM", "VIEWMODEL ERROR")
                 _uiState.value = CharactersUiState(isError = true)
             }
         }
